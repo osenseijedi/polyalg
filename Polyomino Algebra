@@ -1,0 +1,383 @@
+─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼             ┌        ┐
+═ ║ ╔ ╗ ╚ ╝ ╠ ╣ ╦ ╩ ╬             │ -1  -5 │       ╔╗               ╔╗
+                                  │  2   6 │       ╠╣    ╔╦╗        ╠╬╦╗
+╒ ╓  ╕ ╖  ╘ ╙  ╛ ╜ ╞ ╟            │ -1  -5 │      ╔╬╬╗ + ╚╬╬╦╗  =  ╔╬╬╬╬╦╗
+                                  │   ..   │      ╚╩╩╝    ╚╩╩╝     ╚╩╩╩╩╩╝
+╡ ╢ ╤ ╥ ╧ ╨ ╪ ╫                   │   ..   │
+                                  │   ..   │
+                                  │ -1  -5 │
+                                  │ -1  -5 │
+                                  └        ┘
+
+
+╔══════╦══════╦═══════╦══════╦═══════╦════════╗      ┌──────┬──────┬───────┬──────┬───────┬────────┐
+║ ╔╦╦╗ ║  ╔╗  ║ ╔╦╦╦╗ ║  ╔╗  ║ ╔╦╦╗  ║        ║      │ ┌┬┬┐ │  ┌┐  │ ┌┬┬┬┐ │  ┌┐  │ ┌┬┬┐  │        │
+║ ╠╬╬╝ ║ ╔╬╬╗ ║ ╚╩╩╬╣ ║ ╔╬╬╗ ║ ╠╬╬╣  ║ ╔╦╦╦╦╗ ║      │ ├┼┼┘ │ ┌┼┼┐ │ └┴┴┼┤ │ ┌┼┼┐ │ ├┼┼┤  │ ┌┬┬┬┬┐ │
+║ ╚╩╝  ║ ╚╬╬╝ ║    ╚╝ ║ ╚╩╬╣ ║ ╚╝╚╝  ║ ╚╩╩╩╩╝ ║      │ └┴┘  │ └┼┼┘ │    └┘ │ └┴┼┤ │ └┘└┘  │ └┴┴┴┴┘ │
+║      ║  ╚╝  ║       ║   ╚╝ ║       ║        ║      │      │  └┘  │       │   └┘ │       │        │
+╠══════╬══════╬═══════╬══════╬═══════╬════════╣      ├──────┼──────┼───────┼──────┼───────┼────────┤
+║  ╔╗  ║ ╔╦╗  ║  ╔╗   ║  ╔╗  ║ ╔╦╗   ║ ╔╦╦╗   ║      │  ┌┐  │ ┌┬┐  │  ┌┐   │  ┌┐  │ ┌┬┐   │ ┌┬┬┐   │
+║╔╦╬╬╗ ║ ╚╬╬╗ ║  ╠╬╦╗ ║  ╠╣  ║ ╚╬╬╦╗ ║ ╚╩╬╣   ║      │┌┬┼┼┐ │ └┼┼┐ │  ├┼┬┐ │  ├┤  │ └┼┼┬┐ │ └┴┼┤   │
+║╚╩╩╩╝ ║  ╚╬╣ ║  ╚╩╬╣ ║ ╔╬╬╗ ║  ╚╩╩╝ ║   ╠╣   ║      │└┴┴┴┘ │  └┼┤ │  └┴┼┤ │ ┌┼┼┐ │  └┴┴┘ │   ├┤   │
+║      ║   ╚╝ ║    ╚╝ ║ ╚╩╩╝ ║       ║   ╚╝   ║      │      │   └┘ │    └┘ │ └┴┴┘ │       │   └┘   │
+╚══════╩══════╩═══════╩══════╩═══════╩════════╝      └──────┴──────┴───────┴──────┴───────┴────────┘
+
+
+
+for vector lets say p1 = [e1, e2, e3, e4, e5, e6 ]  I tested 3 basic operations:
+
+shift(p1, 1)   = [e2, e3, e4, e5, e6, e1]
+invert(p1)     = [-e1, -e2, -e3, -e4 ,-e5, -e6]
+reverse(p1) = [e6, e5, e4, e3, e2, e1]
+
+Shifting its about changing your start point (from what place your start to draw shape) .
+Inverting and reverse are related with flipping and rotating. (but how related you have to check by yourself, i didnt finish it)
+
+Sum[p1(ei), ei ] = 0.
+Sum[ Abs| p1(ei) | , ei ] = circumference.
+
+I'm not sure how to interpret the length of p1. What does it mean when its high or low. (maybe some relations with shapes symmetry or with how ragged is it.)
+
+About adding p1 and p2 I have some progress but everything looks very messy and I haven't got last answer.
+
+"I think in the general case, there is a need for a point of reference at which the "multiplication" begins.
+For instance if you "multiply" N and I, there are so many ways that you to precise something to say how you start"
+
+Multiplication is crazy, i'm just trying to find rule of adding (first step !)
+
+In very optimistic version we can get not only results of multiplication (x) but also vectors of product.
+
+Example p1 x p2 = p3 = [q1,q2,q3,....].
+but even we know only the length of p3 its still big success ;)
+
+
+
+
+
+
+
+
+
+
+## Notation
+
+Starting from Lukas notation :
+
+    p1 = [e1, e2, e3, e4, e5, e6 ]
+
+This notation is good because it allows us to know the list of steps to describe a given shape.
+But if we really look at it closely it is exactly the same as giving a list of vectors to apply in order :
+
+
+         ┌                                                ┐
+         │ ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐ │
+    p1 = │ │ v1 │, │ v2 │, │ v3 │, │ v4 │, │ v5 │, │ v6 │ │
+         │ └    ┘  └    ┘  └    ┘  └    ┘  └    ┘  └    ┘ │
+         └                                                ┘
+
+Where the vectors are described this way :
+         ┌                                                ┐
+         │ ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐ │
+    p1 = │ │ e1 │, │ 0  │, │ e3 │, │ 0  │, │ e5 │, │ 0  │ │
+         │ │  0 │  │ e2 │  │ 0  │  │ e4 │  │ 0  │  │ e6 │ │
+         │ └    ┘  └    ┘  └    ┘  └    ┘  └    ┘  └    ┘ │
+         └                                                ┘
+
+
+Developing this way really overloads the notation. However, this may allow us to come back to formulas of the
+vectors/matrices world. Which is cool.
+
+In order to have the best of both worlds, I want to do like that :
+
+Starting from Lukas notation:
+
+    p1 = [x1, y1, x2, y2, x3, y3, x4, y4 ]
+
+We have :
+         ┌                                                                ┐
+         │ ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐  ┌    ┐ │
+    p1 = │ │ x1 │, │ 0  │, │ x2 │, │ 0  │, │ x3 │, │ 0  │, │ x4 │, │ 0  │ │
+         │ │  0 │  │ y1 │  │ 0  │  │ y2 │  │ 0  │  │ y3 │  │ 0  │  │ y4 │ │
+         │ └    ┘  └    ┘  └    ┘  └    ┘  └    ┘  └    ┘  └    ┘  └    ┘ │
+         └                                                                ┘
+
+And the notation becomes :
+
+         ┌        ┐
+    p1 = │ x1  y1 │
+         │ x2  y2 │
+         │ x3  y3 │
+         │ x4  y4 │
+         └        ┘
+
+Grouping is indeed possible, because for any shape to be complete, there will always be a y move after an x move.
+And if we start from a y move then the last move will be an x move.
+Because I have to make a choice at this point, I will always start everything with an x move.
+
+### Examples
+
+The simplest shape (single square):
+
+         ┌        ┐
+    ┌┐ = │  1  -1 │
+    └┘   │ -1   1 │
+         └        ┘
+
+Some pentominos :
+
+             ┌        ┐             ┌        ┐        ┌┐    ┌        ┐             ┌        ┐
+    ┌┬┬┬┬┐ = │  5  -1 │     ┌┬┐     │  2  -1 │        ├┤    │  1  -2 │       ┌┐    │  1  -1 │
+    └┴┴┴┴┘   │ -5   1 │     └┼┼┬┐ = │  2  -1 │       ┌┼┼┐ = │  1  -1 │      ┌┼┼┐ = │  1  -1 │
+             └        ┘      └┴┴┘   │ -3   1 │       └┴┴┘   │ -3   1 │      └┼┼┘   │ -1  -1 │
+                                    │  1   1 │              │  1   2 │       └┘    │ -1   1 │
+                                    └        ┘              └        ┘             │ -1   1 │
+                                                                                   │  1   1 │
+                                                                                   └        ┘
+Random shape :
+
+                ┌        ┐
+                │  1  -1 │
+                │  3  -2 │
+     ┌┐         │  1  -1 │
+    ┌┼┼┬┬┐   =  │ -3   2 │
+    └┼┼┼┼┤      │ -1  -1 │
+     └┘├┼┼┐     │ -1   1 │
+       └┴┴┘     │ -1   1 │
+                │  1   1 │
+                └        ┘
+
+
+
+
+
+## Conditions of Existence
+
+For such shape to exist, there are some conditions that need to be met :
+
+	1. xi and yi belong to Z (the set of positive and negative integers)
+
+	2. Sum(xi) = 0 and Sum(yi) = 0
+		-> Otherwise the shape wouldn't be closed
+
+But this is not enough to talk about equivalence : If you have any shape that meet those 2 conditions, that doesn't mean
+the shape is valid,
+Example : Take the following shape:
+
+        ┌┐    ┌        ┐
+        ├┤    │  1   2 │     We have Sum(xi) = 0, Sum(yi) = 0, and all components
+        ├┘  = │  1   2 │     belong to Z. Yet the shape is not valid. This is because we
+       ┌┤     │ -1  -3 │     don't allow a shape that couldn't exist physically (and hold together).
+       └┘     │ -1  -1 │     Here a portion of the shape has a thickness of 0.
+              └        ┘
+
+                                        ┌┐
+                                        ├┤
+In the physical world we would see :    └┘    Which would be 2 distinct shapes.
+                                       ┌┐
+                                       └┘
+
+
+## Properties
+
+	1. Perimeter = Sum |xi| + Sum |yi|
+        TODO
+        Proof:
+
+    2. Shapes are repeatable:
+        If it takes n moves to complete a shape, then repeating the n steps k times (with k a non zero positive integer) will
+    still do the same shape:
+
+         ┌            ┐    ┌            ┐
+    p =  │ x1      y1 │ =  │ x1      y1 │ ╗
+         │ x2      y2 │    │ x2      y2 │ ║
+         │    ....    │    │    ....    │ ╠═ First Iteration
+         │ xn-1  yn-1 │    │ xn-1  yn-1 │ ║
+         │ xn      yn │    │ xn      yn │ ╝
+         └            ┘    │            │
+                           │ x1      y1 │ ╗
+                           │ x2      y2 │ ║
+                           │    ....    │ ╠═ Second Iteration
+                           │ xn-1  yn-1 │ ║
+                           │ xn      yn │ ╝
+                           │            │
+                           │ x1      y1 │ ╗
+                           │ x2      y2 │ ║
+                           │    ....    │ ╠═ third Iteration
+                           │ xn-1  yn-1 │ ║
+                           │ xn      yn │ ╝
+                           └            ┘
+
+    By extension we can also say that we can go after the nth step and stop at the mth step so long :
+        (0) p is defined as a shape (see conditions of existence above),
+        (1) we keep the order of moves,
+        (2) we did at least one iteration,
+        (3) m <= n
+
+         ┌            ┐    ┌            ┐
+    p =  │ x1      y1 │ =  │ x1      y1 │ ╗
+         │ x2      y2 │    │ x2      y2 │ ║
+         │    ....    │    │    ....    │ ╠═ First Iteration (1 to n-th steps)
+         │ xn-1  yn-1 │    │ xn-1  yn-1 │ ║
+         │ xn      yn │    │ xn      yn │ ╝
+         └            ┘    │            │
+                           │ x1      y1 │ ╗
+                           │ x2      y2 │ ║
+                           │    ....    │ ╠═ Beginning of second Iteration
+                           │ xm-1  ym-1 │ ║
+                           │ xm      ym │ ╬═ but we stop here (1 to m-th steps)
+                           └            ┘ ╝
+                           ┌            ┐ ╗
+                           │ xm+1  ym+1 │ ║
+                           │    ....    │ ╠═ Omitted steps
+                           │ xn-1  yn-1 │ ║
+                           │ xn      yn │ ║
+                           └            ┘ ╝
+
+    The repeatability of a shape adds redundant and unnecessary information but it is still valid (in terms of drawing).
+    Be careful though : Conditions of existence can break if m != k.n . It is important to note that conditions of
+    existence only take steps from 1 to n.
+
+
+
+## Operations
+
+Since the notation used is a simplification of matrix notation, matrix operations can apply:
+    1. Scalar product (noted '.' , or '*' ) :
+        Matrix World :
+
+                ┌        ┐
+        Let p = │ x1  y1 │ and k a scalar number.
+                │ x2  y2 │
+                └        ┘
+                      ┌            ┐
+        We have k.p = │ k.x1  k.y1 │
+                      │ k.x2  k.y2 │
+                      └            ┘
+
+        This works because the underlying matrix would be :
+
+             ┌        ┐                                                  ┌            ┐   ┌            ┐
+        mp = │ x1   0 │ and standard scalar product would give    k.mp = │ k.x1   k.0 │ = │ k.x1     0 │
+             │  0  y1 │                                                  │  k.0  k.y1 │   │    0  k.y1 │
+             │ x2   0 │                                                  │ k.x2   k.0 │   │ k.x2     0 │
+             │  0  y2 │                                                  │  k.0  k.y2 │   │    0  k.y2 │
+             └        ┘                                                  └            ┘   └            ┘
+
+        Which would then be contracted (removing the zeros -- remember we are talking in term of moves along the edges
+        of a shape) into :
+
+              ┌            ┐
+        k.p = │ k.x1  k.y1 │
+              │ k.x2  k.y2 │
+              └            ┘
+
+        Example :
+
+        For the following shape:
+
+                    ┌        ┐                         ┌        ┐   ┌        ┐   ┌┬┬┬┐
+            ┌┬┐     │  2  -1 │                 ┌┬┐     │  2  -1 │   │  4  -2 │   ├┼┼┼┤
+            └┼┼┬┐ = │  2  -1 │ , we have   2 * └┼┼┬┐ = │  2  -1 │ = │  4  -2 │ = └┴┼┼┼┬┬┬┐
+             └┴┴┘   │ -3   1 │                  └┴┴┘   │ -3   1 │   │ -6   2 │     ├┼┼┼┼┼┤
+                    │  1   1 │                         │  1   1 │   │  2   2 │     └┴┴┴┴┴┘
+                    └        ┘                         └        ┘   └        ┘
+
+        Properties :
+
+            a. The result shape remains consistent with the shape definitions.
+                TODO
+                Proof:
+
+            b. The surface area of the result shape is multiplied by k^2.
+                TODO
+                Proof:
+
+            c. The perimeter of the result shape is multiplied by k.
+                TODO
+                Proof:
+
+            d. The shape is still closed
+                TODO
+                Proof:
+
+    2. Shape product (noted 'x' ):
+
+        If we have the following shapes :
+
+             ┌            ┐                                   ┌            ┐
+        p =  │ x1      y1 │ and its matrix equivalent :   P = │ x1       0 │
+             │ x2      y2 │                                   │  0      y1 │
+             │    ....    │                                   │ x2       0 │
+             │ xn-1  yn-1 │                                   │  0      y2 │
+             │ xn      yn │                                   │    ....    │
+             └            ┘                                   │ xn-1     0 │
+                                                              │    0  yn-1 │
+                                                              │ xn       0 │
+                                                              │  0      yn │
+                                                              └            ┘
+
+        and
+             ┌              ┐                                 ┌              ┐
+        q =  │ x'1      y'1 │ and its matrix equivalent : Q = │ x'1        0 │
+             │ x'2      y'2 │                                 │   0      y'1 │
+             │     ....     │                                 │ x'2        0 │
+             │ x'm-1  y'm-1 │                                 │   0      y'2 │
+             │ x'm      y'm │                                 │     ....     │
+             └              ┘                                 │ x'm-1      0 │
+                                                              │     0  y'm-1 │
+                                                              │   x'm      0 │
+                                                              │     0    y'm │
+                                                              └              ┘
+
+        The shape product of the result of p x q is defined by constructing the matrix product of
+
+
+                 ┌            ┐     ┌              ┐
+        p x q =  │ x1      y1 │  x  │ x'1      y'1 │
+                 │ x2      y2 │     │ x'2      y'2 │
+                 │    ....    │     │     ....     │
+                 │ xn-1  yn-1 │     │ x'm-1  y'm-1 │
+                 │ xn      yn │     │ x'm      y'm │
+                 └            ┘     └              ┘
+
+
+
+
+
+    1. Shift :
+             ┌        ┐    ┌        ┐
+        p1 = │ x4  y4 │  = │ x1  y1 │
+             │ x1  y1 │    │ x2  y2 │
+             │ x2  y2 │    │ x3  y3 │
+             │ x3  y3 │    │ x4  y4 │
+             └        ┘    └        ┘
+
+        Shift operation keeps the shape itself because it only changes where we start drawing.
+            TODO
+            Proof:
+                [sounds so obvious, i don't know how to prove that one]
+
+
+    2. Invert
+
+
+                                   ┌        ┐                      ┌          ┐
+        The invert of a shape: p = │ x1  y1 │ is defined by : p' = │ -x1  -y1 │
+                                   │ x2  y2 │                      │ -x2  -y2 │
+                                   │   ..   │                      │    ..    │
+                                   │ xn  yn │                      │ -xn  -yn │
+                                   └        ┘                      └          ┘
+
+        And because of the scalar product we have the following :
+             ┌          ┐        ┌        ┐
+        p' = │ -x1  -y1 │ = -1 x │ x1  y1 │ = -p
+             │ -x2  -y2 │        │ x2  y2 │
+             │    ..    │        │   ..   │
+             │ -xn  -yn │        │ xn  yn │
+             └          ┘        └        ┘
+
+
+    3. Reverse
+
+
+
