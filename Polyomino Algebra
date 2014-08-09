@@ -9,6 +9,18 @@
                                   │ -1  -5 │
                                   └        ┘
 
+╔══════════╗
+║ header 1 ║
+╚══════════╝
+    ┌──────────┐
+    │ header 2 │
+    └──────────┘
+         header 3
+        ══════════
+             header 4
+            ──────────
+
+
 
 ╔══════╦══════╦═══════╦══════╦═══════╦════════╗      ┌──────┬──────┬───────┬──────┬───────┬────────┐
 ║ ╔╦╦╗ ║  ╔╗  ║ ╔╦╦╦╗ ║  ╔╗  ║ ╔╦╦╗  ║        ║      │ ┌┬┬┐ │  ┌┐  │ ┌┬┬┬┐ │  ┌┐  │ ┌┬┬┐  │        │
@@ -31,12 +43,14 @@ invert(p1)     = [-e1, -e2, -e3, -e4 ,-e5, -e6]
 reverse(p1) = [e6, e5, e4, e3, e2, e1]
 
 Shifting its about changing your start point (from what place your start to draw shape) .
-Inverting and reverse are related with flipping and rotating. (but how related you have to check by yourself, i didnt finish it)
+Inverting and reverse are related with flipping and rotating. (but how related you have to check by yourself, i didnt
+finish it)
 
 Sum[p1(ei), ei ] = 0.
 Sum[ Abs| p1(ei) | , ei ] = circumference.
 
-I'm not sure how to interpret the length of p1. What does it mean when its high or low. (maybe some relations with shapes symmetry or with how ragged is it.)
+I'm not sure how to interpret the length of p1. What does it mean when its high or low. (maybe some relations with
+shapes symmetry or with how ragged is it.)
 
 About adding p1 and p2 I have some progress but everything looks very messy and I haven't got last answer.
 
@@ -52,14 +66,16 @@ but even we know only the length of p3 its still big success ;)
 
 
 
+TODO make a distinction between a closed and unclosed shapes.
 
 
 
 
 
 
-
-## Notation
+┌──────────┐
+│ Notation │
+└──────────┘
 
 Starting from Lukas notation :
 
@@ -114,7 +130,9 @@ Grouping is indeed possible, because for any shape to be complete, there will al
 And if we start from a y move then the last move will be an x move.
 Because I have to make a choice at this point, I will always start everything with an x move.
 
-### Examples
+
+Examples
+══════════
 
 The simplest shape (single square):
 
@@ -147,10 +165,9 @@ Random shape :
                 └        ┘
 
 
-
-
-
-## Conditions of Existence
+┌─────────────────────────┐
+│ Conditions of Existence │
+└─────────────────────────┘
 
 For such shape to exist, there are some conditions that need to be met :
 
@@ -177,15 +194,17 @@ In the physical world we would see :    └┘    Which would be 2 distinct shap
                                        └┘
 
 
-## Properties
+┌────────────────────┐
+│ General Properties │
+└────────────────────┘
 
 	1. Perimeter = Sum |xi| + Sum |yi|
         TODO
         Proof:
 
-    2. Shapes are repeatable:
-        If it takes n moves to complete a shape, then repeating the n steps k times (with k a non zero positive integer) will
-    still do the same shape:
+    2. Repeatability - Shapes are repeatable:
+        If it takes n moves to complete a shape, then repeating the n steps k times (with k a non zero positive integer)
+    will still do the same shape:
 
          ┌            ┐    ┌            ┐
     p =  │ x1      y1 │ =  │ x1      y1 │ ╗
@@ -210,7 +229,7 @@ In the physical world we would see :    └┘    Which would be 2 distinct shap
     By extension we can also say that we can go after the nth step and stop at the mth step so long :
         (0) p is defined as a shape (see conditions of existence above),
         (1) we keep the order of moves,
-        (2) we did at least one iteration,
+        (2) we did at least k iterations (k an integer >= 1 ),
         (3) m <= n
 
          ┌            ┐    ┌            ┐
@@ -237,41 +256,70 @@ In the physical world we would see :    └┘    Which would be 2 distinct shap
     Be careful though : Conditions of existence can break if m != k.n . It is important to note that conditions of
     existence only take steps from 1 to n.
 
+    2. Paddability - Shapes are 'paddable' with zeros:
+        As define previously, each line of a shape represents a move when drawing. A move of [0 0] will not change
+        anything.
+
+        Therefore it is entirely possible to add lines of zeros, so long the other moves are left unchanged (order is
+        the same):
+
+             ┌            ┐    ┌            ┐
+        p =  │ x1      y1 │ =  │ x1      y1 │
+             │ x2      y2 │    │ x2      y2 │
+             │    ....    │    │  0       0 │
+             │ xn-1  yn-1 │    │  0       0 │
+             │ xn      yn │    │ x3      y3 │
+             └            ┘    │  0       0 │
+                               │    ....    │
+                               │  0       0 │
+                               │    ....    │
+                               │ x4      y4 │
+                               │    ....    │
+                               │ xn-1  yn-1 │
+                               │  0       0 │
+                               │ xn      yn │
+                               │  0       0 │
+                               │  0       0 │
+                               │  0       0 │
+                               │  0       0 │
+                               └            ┘
 
 
-## Operations
+┌────────────┐
+│ Operations │
+└────────────┘
 
-Since the notation used is a simplification of matrix notation, matrix operations can apply:
-    1. Scalar product (noted '.' , or '*' ) :
-        Matrix World :
 
-                ┌        ┐
-        Let p = │ x1  y1 │ and k a scalar number.
-                │ x2  y2 │
-                └        ┘
-                      ┌            ┐
-        We have k.p = │ k.x1  k.y1 │
-                      │ k.x2  k.y2 │
-                      └            ┘
+Scalar product (noted '.' , or '*' )
+══════════════
+            ┌        ┐
+    Let p = │ x1  y1 │ and k a scalar number.
+            │ x2  y2 │
+            └        ┘
+                                             ┌            ┐
+    The scalar product is defined by : k.p = │ k.x1  k.y1 │
+                                             │ k.x2  k.y2 │
+                                             └            ┘
 
-        This works because the underlying matrix would be :
+    This works because the underlying matrix is :
 
-             ┌        ┐                                                  ┌            ┐   ┌            ┐
-        mp = │ x1   0 │ and standard scalar product would give    k.mp = │ k.x1   k.0 │ = │ k.x1     0 │
-             │  0  y1 │                                                  │  k.0  k.y1 │   │    0  k.y1 │
-             │ x2   0 │                                                  │ k.x2   k.0 │   │ k.x2     0 │
-             │  0  y2 │                                                  │  k.0  k.y2 │   │    0  k.y2 │
-             └        ┘                                                  └            ┘   └            ┘
+         ┌        ┐                                           ┌            ┐   ┌            ┐
+    mp = │ x1   0 │ and standard scalar product gives  k.mp = │ k.x1   k.0 │ = │ k.x1     0 │
+         │  0  y1 │                                           │  k.0  k.y1 │   │    0  k.y1 │
+         │ x2   0 │                                           │ k.x2   k.0 │   │ k.x2     0 │
+         │  0  y2 │                                           │  k.0  k.y2 │   │    0  k.y2 │
+         └        ┘                                           └            ┘   └            ┘
 
-        Which would then be contracted (removing the zeros -- remember we are talking in term of moves along the edges
-        of a shape) into :
+    Which would then be contracted (removing the zeros -- remember we are talking in term of moves along the edges
+    of a shape) into :
 
-              ┌            ┐
-        k.p = │ k.x1  k.y1 │
-              │ k.x2  k.y2 │
-              └            ┘
+          ┌            ┐
+    k.p = │ k.x1  k.y1 │
+          │ k.x2  k.y2 │
+          └            ┘
 
-        Example :
+    Example :
+    ─────────
 
         For the following shape:
 
@@ -282,9 +330,12 @@ Since the notation used is a simplification of matrix notation, matrix operation
                     │  1   1 │                         │  1   1 │   │  2   2 │     └┴┴┴┴┴┘
                     └        ┘                         └        ┘   └        ┘
 
-        Properties :
+             TODO Need more examples maybe?
 
-            a. The result shape remains consistent with the shape definitions.
+    Properties :
+    ────────────
+
+            a. The result shape remains consistent with conditions of existence.
                 TODO
                 Proof:
 
@@ -300,51 +351,193 @@ Since the notation used is a simplification of matrix notation, matrix operation
                 TODO
                 Proof:
 
-    2. Shape product (noted 'x' ):
-
-        If we have the following shapes :
-
-             ┌            ┐                                   ┌            ┐
-        p =  │ x1      y1 │ and its matrix equivalent :   P = │ x1       0 │
-             │ x2      y2 │                                   │  0      y1 │
-             │    ....    │                                   │ x2       0 │
-             │ xn-1  yn-1 │                                   │  0      y2 │
-             │ xn      yn │                                   │    ....    │
-             └            ┘                                   │ xn-1     0 │
-                                                              │    0  yn-1 │
-                                                              │ xn       0 │
-                                                              │  0      yn │
-                                                              └            ┘
-
-        and
-             ┌              ┐                                 ┌              ┐
-        q =  │ x'1      y'1 │ and its matrix equivalent : Q = │ x'1        0 │
-             │ x'2      y'2 │                                 │   0      y'1 │
-             │     ....     │                                 │ x'2        0 │
-             │ x'm-1  y'm-1 │                                 │   0      y'2 │
-             │ x'm      y'm │                                 │     ....     │
-             └              ┘                                 │ x'm-1      0 │
-                                                              │     0  y'm-1 │
-                                                              │   x'm      0 │
-                                                              │     0    y'm │
-                                                              └              ┘
-
-        The shape product of the result of p x q is defined by constructing the matrix product of
 
 
-                 ┌            ┐     ┌              ┐
-        p x q =  │ x1      y1 │  x  │ x'1      y'1 │
-                 │ x2      y2 │     │ x'2      y'2 │
-                 │    ....    │     │     ....     │
-                 │ xn-1  yn-1 │     │ x'm-1  y'm-1 │
-                 │ xn      yn │     │ x'm      y'm │
-                 └            ┘     └              ┘
+Shape product (noted 'x' )
+═════════════
+
+    The shape product is defined such that each line of the result shape is the matrix product of the sub-matrices
+    of the operands. This definition might seem complex and overly pedantic but it is actually simple :
+
+    Let's define the two following shapes :
+
+        ┌            ┐                                 ┌            ┐
+    p = │ x1      y1 │ and its matrix equivalent : P = │ x1       0 │ ╗ First sub matrix (first and second moves)
+        │ x2      y2 │                                 │  0      y1 │ ╝
+        │    ....    │                                 │ x2       0 │ ╗ Second sub matrix (third and fourth moves)
+        │ xn-1  yn-1 │                                 │  0      y2 │ ╝
+        │ xn      yn │                                 │    ....    │
+        └            ┘                                 │ xn-1     0 │ ╗ n-1 th sub matrix
+                                                       │    0  yn-1 │ ╝
+                                                       │ xn       0 │ ╗ n th sub matrix (before last and last moves)
+                                                       │  0      yn │ ╝
+                                                       └            ┘
+
+    and
+        ┌              ┐                                 ┌              ┐
+    q = │ x'1      y'1 │ and its matrix equivalent : Q = │ x'1        0 │ ╗ First sub matrix (first and second
+        │ x'2      y'2 │                                 │   0      y'1 │ ╝ moves)
+        │     ....     │                                 │ x'2        0 │ ╗ Second sub matrix (third and fourth
+        │ x'm-1  y'm-1 │                                 │   0      y'2 │ ╝ moves)
+        │ x'm      y'm │                                 │     ....     │
+        └              ┘                                 │ x'm-1      0 │ ╗ m-1 th sub matrix
+                                                         │     0  y'm-1 │ ╝
+                                                         │   x'm      0 │ ╗ m th sub matrix (before last and last
+                                                         │     0    y'm │ ╝ moves)
+                                                         └              ┘
+
+    Since in most situations n != m, we need to fill one or the other shape with extra elements so that there is
+    equal number of moves in each shapes.
+
+    Below, I call a = max (n, m) and I pad the shortest shape (ie the shape that contain the smallest number of
+    moves) with either repeated steps or zero moves [0 0] (see repeatability and paddability). For the sake of
+    the definition it is not necessary to fix a specific padding.
+
+
+    Then the shape product is defined as:
+
+                Padded           Padded
+                de-contracted    de-contracted
+                     p                q
+               ┌────────────┐   ┌────────────┐
+
+             ┌                                  ┐    ┌                       ┐
+             │ ┌            ┐   ┌             ┐ │    │ ┌                ┐    │  ╗
+    p x q => │ │ x1       0 │ x │ x'1       0 │ │ =  │ │ x1*x'1       0 │    │  ║ Matrix product of the first
+             │ │  0      y1 │   │  0      y'1 │ │    │ │  0      y1*y'1 │    │  ║ sub-matrices
+             │ └            ┘   └             ┘ │    │ └                ┘    │  ╝
+             │ ┌            ┐   ┌             ┐ │    │ ┌                ┐    │  ╗
+             │ │ x2       0 │ x │ x'2       0 │ │    │ │ x2*x'2       0 │    │  ║ Matrix product of the second
+             │ │  0      y2 │   │  0      y'2 │ │    │ │  0      y2*y'2 │    │  ║ sub-matrices
+             │ └            ┘   └             ┘ │    │ └                ┘    │  ╝
+             │     ........................     │    │     .......           │
+             │ ┌            ┐   ┌             ┐ │    │ ┌                   ┐ │  ╗
+             │ │ xa-1     0 │ x │ x'a-1     0 │ │    │ │  xa-1*x'a-1     0 │ │  ║ Matrix product of the a-1 th
+             │ │    0  ya-1 │   │    0  y'a-1 │ │    │ │    0  ya-1*y'a-1  │ │  ║ sub-matrices
+             │ └            ┘   └             ┘ │    │ └                   ┘ │  ╝
+             │ ┌            ┐   ┌             ┐ │    │ ┌                 ┐   │  ╗
+             │ │  xa       0│ x │  x'a      0 │ │    │ │  xa*x'a       0 │   │  ║ Matrix product of the a-th
+             │ │   0      ya│   │   0     y'a │ │    │ │   0      ya*y'a │   │  ║ sub-matrices
+             │ └            ┘   └             ┘ │    │ └                 ┘   │  ╝
+             └                                  ┘    └                       ┘
+
+    Which by contraction becomes :
+            ┌                             ┐
+    p x q = │ x1 * x'1           y1 * y'1 │
+            │ x2 * x'2           y2 * y'2 │
+            │         ...........         │
+            │ xa-1 * x'a-1   ya-1 * y'a-1 │
+            │ xa * x'a           ya * y'a │
+            └                             ┘
+
+    Padding :
+    ────────
+
+        As said in previous section, for the product to be able to take place we need to pad one or the other shape, in
+        order to have the same amount of moves in each shape.
+
+        There are an infinite way of adding moves but I'll present here the 2 ways that I found most relevant.
+
+
+        Zero moves:
+        -----------
+
+            Zero moves [0 0] don't affect the original shape so it is possible to insert them and still have the same
+            shape (see Paddability paragraph).
+
+            In the above p x q example lets say that n < m. We then pad p with m-n zero moves at the end of the shape.
+
+            p becomes :
+                 ┌            ┐
+            p =  │ x1      y1 │ ╗
+                 │ x2      y2 │ ║
+                 │    ....    │ ║ Original shape
+                 │ xn-1  yn-1 │ ║
+                 │ xn      yn │ ╝
+                 │  0       0 │ ╗
+                 │    ....    │ ║ additional m-n moves
+                 │  0       0 │ ║
+                 │  0       0 │ ╝
+                 └            ┘
+
+            Applying this p to the shape product above leads to :
+
+                    ┌                             ┐
+            p x q = │ x1 * x'1           y1 * y'1 │
+                    │ x2 * x'2           y2 * y'2 │
+                    │         ...........         │
+                    │ xn * x'n           yn * y'n │
+                    │        0                0   │  ╗
+                    │        0                0   │  ║ The additional m-n last steps all become zero.
+                    │         ...........         │  ║
+                    │        0                0   │  ║
+                    │        0                0   │  ╝
+                    └                             ┘
+
+            Finally we have :
+
+                    ┌                             ┐
+            p x q = │ x1 * x'1           y1 * y'1 │
+                    │ x2 * x'2           y2 * y'2 │
+                    │         ...........         │
+                    │ xn * x'n           yn * y'n │
+                    └                             ┘
+
+            Example:
+
+                1.
+                                 ┌        ┐
+                         ┌┬┐     │  2  -1 │                 ┌        ┐   ┌        ┐
+                     p = └┼┼┬┐ = │  2  -1 │    q = ┌┬┬┬┬┐ = │  5  -1 │ = │  5  -1 │
+                          └┴┴┘   │ -3   1 │        └┴┴┴┴┘   │ -5   1 │   │ -5   1 │
+                                 │  1   1 │                 └        ┘   │  0   0 │
+                                 └        ┘                              │  0   0 │
+                                                                         └        ┘
+                             ┌         ┐
+                     p x q = │  10   1 │
+                             │ -10  -1 │  = ┌┬┬┬┬┬┬┬┬┬┐     <--- The resulting shape is closed and valid.
+                             │   0   0 │    └┴┴┴┴┴┴┴┴┴┘
+                             │   0   0 │
+                             └         ┘
+
+                2.
+                                               Padded
+                                ┌        ┐   ┌        ┐                        ┌        ┐
+                        ┌┬┐     │  2  -1 │   │  2  -1 │                  ┌┐    │  1  -1 │
+                    p = └┼┼┬┐ = │  2  -1 │ = │  2  -1 │             q = ┌┼┼┐ = │  1  -1 │
+                         └┴┴┘   │ -3   1 │   │ -3   1 │                 └┼┼┘   │ -1  -1 │
+                                │  1   1 │   │  1   1 │                  └┘    │ -1   1 │
+                                └        ┘   │  0   0 │                        │ -1   1 │
+                                             │  0   0 │                        │  1   1 │
+                                             └        ┘                        └        ┘
+
+                                     ┌        ┐          ┌┬┬┐
+                    And so, p x q =  │  2   1 │ =     ┌┬┬┘ ┌┘     <--- The resulting shape is not closed.
+                                     │  2   1 │     ┌┬┘
+                                     │  3  -1 │
+                                     │ -1   1 │
+                                     │  0   0 │
+                                     │  0   0 │
+                                     └        ┘
+
+                3. TODO Examples of p x p
 
 
 
 
 
-    1. Shift :
+
+
+
+-- More paragraphs that need writing -----------------------------------------------------------------------
+
+
+
+
+
+
+    Shift
+    ═════
              ┌        ┐    ┌        ┐
         p1 = │ x4  y4 │  = │ x1  y1 │
              │ x1  y1 │    │ x2  y2 │
@@ -358,8 +551,8 @@ Since the notation used is a simplification of matrix notation, matrix operation
                 [sounds so obvious, i don't know how to prove that one]
 
 
-    2. Invert
-
+    Invert
+    ══════
 
                                    ┌        ┐                      ┌          ┐
         The invert of a shape: p = │ x1  y1 │ is defined by : p' = │ -x1  -y1 │
@@ -377,7 +570,29 @@ Since the notation used is a simplification of matrix notation, matrix operation
              └          ┘        └        ┘
 
 
-    3. Reverse
+    Mirror Along X axis
+    ═══════════════════
 
+        Shape product of :
 
+        For a shape of n moves, lets consider the shape made of n moves of [1 -1]
 
+                 ┌      ┐
+                 │ 1 -1 │
+            px = │ 1 -1 │ x p
+                 │ 1 -1 │
+                 │ 1 -1 │
+                 └      ┘
+
+            px = [1 -1] x p
+
+        TODO develop
+
+    Mirror Along Y axis
+    ═══════════════════
+
+        Shape product of :
+
+            py = [-1 1] x p
+
+        TODO develop
