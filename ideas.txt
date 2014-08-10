@@ -1,0 +1,66 @@
+─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼             ┌        ┐
+═ ║ ╔ ╗ ╚ ╝ ╠ ╣ ╦ ╩ ╬             │ -1  -5 │       ╔╗               ╔╗
+                                  │  2   6 │       ╠╣    ╔╦╗        ╠╬╦╗
+╒ ╓  ╕ ╖  ╘ ╙  ╛ ╜ ╞ ╟            │ -1  -5 │      ╔╬╬╗ + ╚╬╬╦╗  =  ╔╬╬╬╬╦╗
+                                  │   ..   │      ╚╩╩╝    ╚╩╩╝     ╚╩╩╩╩╩╝
+╡ ╢ ╤ ╥ ╧ ╨ ╪ ╫                   │   ..   │
+                                  │   ..   │
+                                  │ -1  -5 │
+                                  │ -1  -5 │
+                                  └        ┘
+
+╔══════════╗
+║ header 1 ║
+╚══════════╝
+    ┌──────────┐
+    │ header 2 │
+    └──────────┘
+         header 3
+        ══════════
+             header 4
+            ──────────
+
+
+
+╔══════╦══════╦═══════╦══════╦═══════╦════════╗      ┌──────┬──────┬───────┬──────┬───────┬────────┐
+║ ╔╦╦╗ ║  ╔╗  ║ ╔╦╦╦╗ ║  ╔╗  ║ ╔╦╦╗  ║        ║      │ ┌┬┬┐ │  ┌┐  │ ┌┬┬┬┐ │  ┌┐  │ ┌┬┬┐  │        │
+║ ╠╬╬╝ ║ ╔╬╬╗ ║ ╚╩╩╬╣ ║ ╔╬╬╗ ║ ╠╬╬╣  ║ ╔╦╦╦╦╗ ║      │ ├┼┼┘ │ ┌┼┼┐ │ └┴┴┼┤ │ ┌┼┼┐ │ ├┼┼┤  │ ┌┬┬┬┬┐ │
+║ ╚╩╝  ║ ╚╬╬╝ ║    ╚╝ ║ ╚╩╬╣ ║ ╚╝╚╝  ║ ╚╩╩╩╩╝ ║      │ └┴┘  │ └┼┼┘ │    └┘ │ └┴┼┤ │ └┘└┘  │ └┴┴┴┴┘ │
+║      ║  ╚╝  ║       ║   ╚╝ ║       ║        ║      │      │  └┘  │       │   └┘ │       │        │
+╠══════╬══════╬═══════╬══════╬═══════╬════════╣      ├──────┼──────┼───────┼──────┼───────┼────────┤
+║  ╔╗  ║ ╔╦╗  ║  ╔╗   ║  ╔╗  ║ ╔╦╗   ║ ╔╦╦╗   ║      │  ┌┐  │ ┌┬┐  │  ┌┐   │  ┌┐  │ ┌┬┐   │ ┌┬┬┐   │
+║╔╦╬╬╗ ║ ╚╬╬╗ ║  ╠╬╦╗ ║  ╠╣  ║ ╚╬╬╦╗ ║ ╚╩╬╣   ║      │┌┬┼┼┐ │ └┼┼┐ │  ├┼┬┐ │  ├┤  │ └┼┼┬┐ │ └┴┼┤   │
+║╚╩╩╩╝ ║  ╚╬╣ ║  ╚╩╬╣ ║ ╔╬╬╗ ║  ╚╩╩╝ ║   ╠╣   ║      │└┴┴┴┘ │  └┼┤ │  └┴┼┤ │ ┌┼┼┐ │  └┴┴┘ │   ├┤   │
+║      ║   ╚╝ ║    ╚╝ ║ ╚╩╩╝ ║       ║   ╚╝   ║      │      │   └┘ │    └┘ │ └┴┴┘ │       │   └┘   │
+╚══════╩══════╩═══════╩══════╩═══════╩════════╝      └──────┴──────┴───────┴──────┴───────┴────────┘
+
+
+
+for vector lets say p1 = [e1, e2, e3, e4, e5, e6 ]  I tested 3 basic operations:
+
+shift(p1, 1)   = [e2, e3, e4, e5, e6, e1]
+invert(p1)     = [-e1, -e2, -e3, -e4 ,-e5, -e6]
+reverse(p1) = [e6, e5, e4, e3, e2, e1]
+
+Shifting its about changing your start point (from what place your start to draw shape) .
+Inverting and reverse are related with flipping and rotating. (but how related you have to check by yourself, i didnt
+finish it)
+
+Sum[p1(ei), ei ] = 0.
+Sum[ Abs| p1(ei) | , ei ] = circumference.
+
+I'm not sure how to interpret the length of p1. What does it mean when its high or low. (maybe some relations with
+shapes symmetry or with how ragged is it.)
+
+About adding p1 and p2 I have some progress but everything looks very messy and I haven't got last answer.
+
+"I think in the general case, there is a need for a point of reference at which the "multiplication" begins.
+For instance if you "multiply" N and I, there are so many ways that you to precise something to say how you start"
+
+Multiplication is crazy, i'm just trying to find rule of adding (first step !)
+
+In very optimistic version we can get not only results of multiplication (x) but also vectors of product.
+
+Example p1 x p2 = p3 = [q1,q2,q3,....].
+but even we know only the length of p3 its still big success ;)
+

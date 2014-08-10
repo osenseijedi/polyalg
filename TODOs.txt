@@ -1,0 +1,80 @@
+
+TODO make a distinction between a closed and unclosed shapes.
+
+
+General Properties -> perimeter : TODO Proof
+Scalar product -> examples : TODO Need more examples maybe?
+Scalar product -> properties : They all need proofs
+
+Shape product -> examples : TODO Examples of p x p
+
+
+
+
+
+
+
+
+-- More paragraphs that need writing -----------------------------------------------------------------------
+
+
+    Shift
+    ═════
+             ┌        ┐    ┌        ┐
+        p1 = │ x4  y4 │  = │ x1  y1 │
+             │ x1  y1 │    │ x2  y2 │
+             │ x2  y2 │    │ x3  y3 │
+             │ x3  y3 │    │ x4  y4 │
+             └        ┘    └        ┘
+
+        Shift operation keeps the shape itself because it only changes where we start drawing.
+            TODO
+            Proof:
+                [sounds so obvious, i don't know how to prove that one]
+
+
+    Invert
+    ══════
+
+                                   ┌        ┐                      ┌          ┐
+        The invert of a shape: p = │ x1  y1 │ is defined by : p' = │ -x1  -y1 │
+                                   │ x2  y2 │                      │ -x2  -y2 │
+                                   │   ..   │                      │    ..    │
+                                   │ xn  yn │                      │ -xn  -yn │
+                                   └        ┘                      └          ┘
+
+        And because of the scalar product we have the following :
+             ┌          ┐        ┌        ┐
+        p' = │ -x1  -y1 │ = -1 x │ x1  y1 │ = -p
+             │ -x2  -y2 │        │ x2  y2 │
+             │    ..    │        │   ..   │
+             │ -xn  -yn │        │ xn  yn │
+             └          ┘        └        ┘
+
+
+    Mirror Along X axis
+    ═══════════════════
+
+        Shape product of :
+
+        For a shape of n moves, lets consider the shape made of n moves of [1 -1]
+
+                 ┌      ┐
+                 │ 1 -1 │
+            px = │ 1 -1 │ x p
+                 │ 1 -1 │
+                 │ 1 -1 │
+                 └      ┘
+
+            px = [1 -1] x p
+
+        TODO develop
+
+    Mirror Along Y axis
+    ═══════════════════
+
+        Shape product of :
+
+            py = [-1 1] x p
+
+        TODO develop
