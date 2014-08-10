@@ -64,3 +64,30 @@ In very optimistic version we can get not only results of multiplication (x) but
 Example p1 x p2 = p3 = [q1,q2,q3,....].
 but even we know only the length of p3 its still big success ;)
 
+/* 
+ * First sorry I don't know better way how to add comments here so please correct me if necessary
+ * If this shape can be represented in another way: (*)
+ *      ┌┐    ┌        ┐   ┌        ┐  
+ *      ├┤    │  1   2 │   │  1   2 │ 
+ *      ├┘  = │  1   2 │ = │  1   2 │ 
+ *     ┌┤     │ -1  -6 │   │ -1  -3 │
+ *     ├┤     │ -1  -2 │   │  0   0 │
+ *     └┘     └        ┘   │ -3   0 │
+ *                         │ -1  -2 │
+ *                         └        ┘ 
+ * 
+ * which is incompatible with point 2.Paddability.
+ * Direction is additional information stored in vectors.
+ * So I think adding vector zero v[0,0] one change direction of next vector. Add another zero v[0,0] can be treated as
+ * go back to          
+ * start point.
+ *    
+ * (*) If this operation is allowed then its possible to divide a vector into 2 or k pieces and test if vector passed 
+ * third condition. 
+ * @author Lukas
+ * @date 10.08.14 10:59
+ * @version 0
+ */
+ 
+ 
+ 
