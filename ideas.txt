@@ -78,9 +78,9 @@ but even we know only the length of p3 its still big success ;)
  * 
  * which is incompatible with point 2.Paddability.
  * Direction is additional information stored in vectors.
- * So I think adding vector zero v[0,0] one change direction of next vector. Add another zero v[0,0] can be treated as
- * go back to          
- * start point.
+ * So I think adding vector zero v[0,0] change direction of next vector. Add another zero v[0,0] can be treated as
+ * go back to start point.  
+ * 
  *    
  * (*) If this operation is allowed then its possible to divide a vector into 2 or k pieces and test if vector passed 
  * third condition. 
