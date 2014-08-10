@@ -147,7 +147,7 @@ Some pentominos :
     ┌┬┬┬┬┐ = │  5  -1 │     ┌┬┐     │  2  -1 │        ├┤    │  1  -2 │       ┌┐    │  1  -1 │
     └┴┴┴┴┘   │ -5   1 │     └┼┼┬┐ = │  2  -1 │       ┌┼┼┐ = │  1  -1 │      ┌┼┼┐ = │  1  -1 │
              └        ┘      └┴┴┘   │ -3   1 │       └┴┴┘   │ -3   1 │      └┼┼┘   │ -1  -1 │
-                                    │  1   1 │              │  1   2 │       └┘    │ -1   1 │
+                                    │ -1   1 │              │  1   2 │       └┘    │ -1   1 │
                                     └        ┘              └        ┘             │ -1   1 │
                                                                                    │  1   1 │
                                                                                    └        ┘
@@ -323,12 +323,12 @@ Scalar product (noted '.' , or '*' )
 
         For the following shape:
 
-                    ┌        ┐                         ┌        ┐   ┌        ┐   ┌┬┬┬┐
-            ┌┬┐     │  2  -1 │                 ┌┬┐     │  2  -1 │   │  4  -2 │   ├┼┼┼┤
-            └┼┼┬┐ = │  2  -1 │ , we have   2 * └┼┼┬┐ = │  2  -1 │ = │  4  -2 │ = └┴┼┼┼┬┬┬┐
-             └┴┴┘   │ -3   1 │                  └┴┴┘   │ -3   1 │   │ -6   2 │     ├┼┼┼┼┼┤
-                    │  1   1 │                         │  1   1 │   │  2   2 │     └┴┴┴┴┴┘
-                    └        ┘                         └        ┘   └        ┘
+                    ┌        ┐                         ┌        ┐   ┌┬┬┬┐
+            ┌┬┐     │  2  -1 │                 ┌┬┐     │  4  -2 │   ├┼┼┼┤
+            └┼┼┬┐ = │  2  -1 │ , we have   2 * └┼┼┬┐ = │  4  -2 │ = └┴┼┼┼┬┬┬┐
+             └┴┴┘   │ -3   1 │                  └┴┴┘   │ -6   2 │     ├┼┼┼┼┼┤
+                    │ -1   1 │                         │ -2   2 │     └┴┴┴┴┴┘
+                    └        ┘                         └        ┘
 
              TODO Need more examples maybe?
 
@@ -356,7 +356,7 @@ Scalar product (noted '.' , or '*' )
 Shape product (noted 'x' )
 ═════════════
 
-    The shape product is defined such that each line of the result shape is the matrix product of the sub-matrices
+    The shape product is defined such that each move of the result shape is the matrix product of the sub-matrices
     of the operands. This definition might seem complex and overly pedantic but it is actually simple :
 
     Let's define the two following shapes :
@@ -402,23 +402,23 @@ Shape product (noted 'x' )
                ┌────────────┐   ┌────────────┐
 
              ┌                                  ┐    ┌                       ┐
-             │ ┌            ┐   ┌             ┐ │    │ ┌                ┐    │  ╗
-    p x q => │ │ x1       0 │ x │ x'1       0 │ │ =  │ │ x1*x'1       0 │    │  ║ Matrix product of the first
-             │ │  0      y1 │   │  0      y'1 │ │    │ │  0      y1*y'1 │    │  ║ sub-matrices
-             │ └            ┘   └             ┘ │    │ └                ┘    │  ╝
-             │ ┌            ┐   ┌             ┐ │    │ ┌                ┐    │  ╗
-             │ │ x2       0 │ x │ x'2       0 │ │    │ │ x2*x'2       0 │    │  ║ Matrix product of the second
-             │ │  0      y2 │   │  0      y'2 │ │    │ │  0      y2*y'2 │    │  ║ sub-matrices
-             │ └            ┘   └             ┘ │    │ └                ┘    │  ╝
+             │ ┌            ┐   ┌             ┐ │    │ ┌                   ┐ │  ╗
+    p x q => │ │ x1       0 │ x │ x'1       0 │ │ =  │ │ x1*x'1          0 │ │  ║ Matrix product of the first
+             │ │  0      y1 │   │  0      y'1 │ │    │ │  0         y1*y'1 │ │  ║ sub-matrices
+             │ └            ┘   └             ┘ │    │ └                   ┘ │  ╝
+             │ ┌            ┐   ┌             ┐ │    │ ┌                   ┐ │  ╗
+             │ │ x2       0 │ x │ x'2       0 │ │    │ │ x2*x'2          0 │ │  ║ Matrix product of the second
+             │ │  0      y2 │   │  0      y'2 │ │    │ │  0         y2*y'2 │ │  ║ sub-matrices
+             │ └            ┘   └             ┘ │    │ └                   ┘ │  ╝
              │     ........................     │    │     .......           │
              │ ┌            ┐   ┌             ┐ │    │ ┌                   ┐ │  ╗
              │ │ xa-1     0 │ x │ x'a-1     0 │ │    │ │  xa-1*x'a-1     0 │ │  ║ Matrix product of the a-1 th
              │ │    0  ya-1 │   │    0  y'a-1 │ │    │ │    0  ya-1*y'a-1  │ │  ║ sub-matrices
              │ └            ┘   └             ┘ │    │ └                   ┘ │  ╝
-             │ ┌            ┐   ┌             ┐ │    │ ┌                 ┐   │  ╗
-             │ │  xa       0│ x │  x'a      0 │ │    │ │  xa*x'a       0 │   │  ║ Matrix product of the a-th
-             │ │   0      ya│   │   0     y'a │ │    │ │   0      ya*y'a │   │  ║ sub-matrices
-             │ └            ┘   └             ┘ │    │ └                 ┘   │  ╝
+             │ ┌            ┐   ┌             ┐ │    │ ┌                   ┐ │  ╗
+             │ │  xa       0│ x │  x'a      0 │ │    │ │  xa*x'a         0 │ │  ║ Matrix product of the a-th
+             │ │   0      ya│   │   0     y'a │ │    │ │   0        ya*y'a │ │  ║ sub-matrices
+             │ └            ┘   └             ┘ │    │ └                   ┘ │  ╝
              └                                  ┘    └                       ┘
 
     Which by contraction becomes :
@@ -490,7 +490,7 @@ Shape product (noted 'x' )
                          ┌┬┐     │  2  -1 │                 ┌        ┐   ┌        ┐
                      p = └┼┼┬┐ = │  2  -1 │    q = ┌┬┬┬┬┐ = │  5  -1 │ = │  5  -1 │
                           └┴┴┘   │ -3   1 │        └┴┴┴┴┘   │ -5   1 │   │ -5   1 │
-                                 │  1   1 │                 └        ┘   │  0   0 │
+                                 │ -1   1 │                 └        ┘   │  0   0 │
                                  └        ┘                              │  0   0 │
                                                                          └        ┘
                              ┌         ┐
@@ -506,16 +506,16 @@ Shape product (noted 'x' )
                         ┌┬┐     │  2  -1 │   │  2  -1 │                  ┌┐    │  1  -1 │
                     p = └┼┼┬┐ = │  2  -1 │ = │  2  -1 │             q = ┌┼┼┐ = │  1  -1 │
                          └┴┴┘   │ -3   1 │   │ -3   1 │                 └┼┼┘   │ -1  -1 │
-                                │  1   1 │   │  1   1 │                  └┘    │ -1   1 │
+                                │ -1   1 │   │ -1   1 │                  └┘    │ -1   1 │
                                 └        ┘   │  0   0 │                        │ -1   1 │
                                              │  0   0 │                        │  1   1 │
                                              └        ┘                        └        ┘
 
                                      ┌        ┐          ┌┬┬┐
-                    And so, p x q =  │  2   1 │ =     ┌┬┬┘ ┌┘     <--- The resulting shape is not closed.
+                    And so, p x q =  │  2   1 │ =     ┌┬┬┘  └┘    <--- The resulting shape is not closed.
                                      │  2   1 │     ┌┬┘
                                      │  3  -1 │
-                                     │ -1   1 │
+                                     │  1   1 │
                                      │  0   0 │
                                      │  0   0 │
                                      └        ┘
